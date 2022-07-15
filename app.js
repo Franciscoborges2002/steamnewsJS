@@ -1,11 +1,13 @@
 const axios = require("axios");
 
+const settings = require("./settings");
+
 baseURL = "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/";
 hasReapetedNews = false;
 howManyNews = 0;
 newsTitles = []
 
-async function getNews(appid, countOfNews, maxLength, trust, format){
+async function getNews(appid, countOfNews = 20, maxLength, trust = false, format = "json"){
     //Changing the format of the file, json if not specified
     //appid -> app id of the game
     //countOfNews -> The number of news to appear
@@ -56,4 +58,4 @@ async function getNews(appid, countOfNews, maxLength, trust, format){
     
 }
 
-getNews(440, 3, 3000, true)
+getNews(settings.appid, settings.countOfNews, settings.maxLenght, settings.trust, settings.format)
